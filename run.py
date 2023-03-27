@@ -42,5 +42,15 @@ def validate_data(values):
         print(f"Invalid data {e}. Please try again\n")
         return False
     return True    
+
+def update_sales_sheet(data):
+    """ update google sheet with the data provided by the user """
+    print('Updating the Google Spreadsheet...\n')
+    sales_worksheet = SHEET.worksheet('sales')
+    sales_worksheet.append_row(data)
+    print('Sales worksheet updated successfully\n')
     
 data = get_sales_data()
+print(data)
+sales_data = [int(num) for num in data]
+update_sales_sheet(sales_data)
